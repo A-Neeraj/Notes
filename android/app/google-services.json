@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "248116877977",
+    "project_id": "notes-91337",
+    "storage_bucket": "notes-91337.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248116877977:android:a8bfd9113be3697044f608",
+        "android_client_info": {
+          "package_name": "com.neeraj.notes_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "248116877977-vgdatf09o0ojfv7hl1utatfe50uin3el.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLsKTq_72M4KNj4ghIL-Z91Tq2vtJbFs0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "248116877977-vgdatf09o0ojfv7hl1utatfe50uin3el.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
