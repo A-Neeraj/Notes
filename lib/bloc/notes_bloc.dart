@@ -32,11 +32,11 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
       yield LoadingState();
       var notes = await repo.getNotes('trash');
       yield GetState(notes: notes);
+    } else if (event is UpdateEvent) {
+      yield LoadingState();
+      await repo.updateNotes(
+          NotesModel(title: event.title, desc: event.desc), event.id);
+      yield UpdateState();
     }
-
-    // else if (event is UpdateEvent) {
-    //   yield LoadingState();
-    //   await repo.updateNotes(notes)
-    // }
   }
 }

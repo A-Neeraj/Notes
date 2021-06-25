@@ -10,7 +10,7 @@ class NotesModel {
         "desc": desc,
       };
 
-  NotesModel.fromMap(Map<String, dynamic> map,String id)
+  NotesModel.fromMap(Map<String, dynamic> map, String id)
       : title = map["title"],
         desc = map["desc"],
         id = id;

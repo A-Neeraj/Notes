@@ -28,4 +28,9 @@ class NotesRepository {
     db1.add(notes.toMap());
     db.doc(id).delete();
   }
+
+  updateNotes(NotesModel notes, var id) {
+    print(notes.toMap());
+    db.doc(id).set(notes.toMap());
+  }
 }

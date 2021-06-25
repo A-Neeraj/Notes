@@ -2,8 +2,9 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:notes_app/bloc/notes_bloc.dart';
-import 'package:notes_app/screens/card_details.dart';
+import 'package:notes_app/card_data.dart';
 import 'package:flutter/foundation.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 
@@ -68,61 +69,66 @@ class _MyHomePageState extends State<MyHomePage> {
                     if (state is LoadingState)
                       return Center(child: CircularProgressIndicator());
                     else if (state is GetState)
-                      return ListView.builder(
-                          itemCount: state.notes.length,
-                          itemBuilder: (context, i) {
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => CardDetails(
-                                        index: _selectedIndex,
-                                        title: state.notes[i].title,
-                                        desc: state.notes[i].desc,
-                                        id: state.notes[i].id,
-                                      ),
-                                    ),
-                                  );
-                                },
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        20), // if you need this
-                                    side: BorderSide(
-                                      color: Colors.grey.withOpacity(0.2),
-                                      width: 1,
-                                    ),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8.0, right: 8.0, bottom: 8.0),
-                                    child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            state.notes[i].title,
-                                            style: TextStyle(
-                                                fontSize: 30,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          SizedBox(
-                                            height: 10,
-                                          ),
-                                          Text(
-                                            state.notes[i].desc,
-                                            style: TextStyle(fontSize: 20),
-                                            maxLines: 2,
-                                          )
-                                        ]),
+                      return StaggeredGridView.countBuilder(
+                        crossAxisCount: 4,
+                        // mainAxisExtent:
+                        //     MediaQuery.of(context).size.height * 0.2),
+                        itemCount: state.notes.length,
+                        itemBuilder: (context, i) {
+                          return Padding(
+                            padding: const EdgeInsets.only(
+                                top: 8.0, right: 5.0, left: 5.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/details',
+                                    arguments: CardData(
+                                        state.notes[i].title,
+                                        state.notes[i].desc,
+                                        state.notes[i].id,
+                                        _selectedIndex));
+                              },
+                              child: Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      20), // if you need this
+                                  side: BorderSide(
+                                    color: Colors.grey.withOpacity(0.2),
+                                    width: 1,
                                   ),
                                 ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 8.0, right: 8.0, bottom: 8.0),
+                                  child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        AutoSizeText(
+                                          state.notes[i].title,
+                                          maxLines: 1,
+                                          style: TextStyle(
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Text(
+                                          state.notes[i].desc,
+                                          style: TextStyle(fontSize: 20),
+                                          maxLines: 2,
+                                        )
+                                      ]),
+                                ),
                               ),
-                            );
-                          });
+                            ),
+                          );
+                        },
+                        staggeredTileBuilder: (int index) =>
+                            new StaggeredTile.fit(2),
+                        mainAxisSpacing: 2.0,
+                        crossAxisSpacing: 0,
+                      );
                     else
                       return Center(child: Text('Error loading Data'));
                   },
