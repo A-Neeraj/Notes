@@ -51,7 +51,6 @@ class _CardDetailsState extends State<CardDetails> {
             BlocProvider.of<NotesBloc>(context).add(GetAllEvent());
           }
           if (state is DeleteForeverState) {
-            // BlocProvider.of<NotesBloc>(context).add(GetTrashEvent());
             Navigator.pop(context);
             BlocProvider.of<NotesBloc>(context).add(GetTrashEvent());
             BlocProvider.of<NotesBloc>(context).add(GetTrashEvent());
@@ -59,6 +58,7 @@ class _CardDetailsState extends State<CardDetails> {
           if (state is RestoreState) {
             BlocProvider.of<NotesBloc>(context).add(GetTrashEvent());
             Navigator.pop(context);
+            BlocProvider.of<NotesBloc>(context).add(GetTrashEvent());
           }
         },
         child: Center(
