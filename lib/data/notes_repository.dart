@@ -30,7 +30,15 @@ class NotesRepository {
   }
 
   updateNotes(NotesModel notes, var id) {
-    print(notes.toMap());
     db.doc(id).set(notes.toMap());
+  }
+
+  deleteForever(var id) {
+    db1.doc(id).delete();
+  }
+
+  restoreNote(NotesModel notes, var id) {
+    db.add(notes.toMap());
+    db1.doc(id).delete();
   }
 }

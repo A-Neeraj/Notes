@@ -37,6 +37,13 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
       await repo.updateNotes(
           NotesModel(title: event.title, desc: event.desc), event.id);
       yield UpdateState();
+    } else if (event is DeleteForeverEvent) {
+      await repo.deleteForever(event.id);
+      yield DeleteForeverState();
+    } else if (event is RestoreEvent) {
+      await repo.restoreNote(
+          NotesModel(title: event.title, desc: event.desc), event.id);
+      yield RestoreState();
     }
   }
 }

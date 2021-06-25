@@ -18,3 +18,7 @@ class GetState extends NotesState {
 class DeleteState extends NotesState {}
 
 class UpdateState extends NotesState {}
+
+class RestoreState extends NotesState {}
+
+class DeleteForeverState extends NotesState {}

@@ -29,3 +29,15 @@ class UpdateEvent extends NotesEvent {
   String desc;
   UpdateEvent({this.title, this.desc, this.id});
 }
+
+class RestoreEvent extends NotesEvent {
+  String id;
+  String title;
+  String desc;
+  RestoreEvent({this.title, this.desc, this.id});
+}
+
+class DeleteForeverEvent extends NotesEvent {
+  String id;
+  DeleteForeverEvent({this.id});
+}
