@@ -22,3 +22,7 @@ class UpdateState extends NotesState {}
 class RestoreState extends NotesState {}
 
 class DeleteForeverState extends NotesState {}
+
+class UploadVideoState extends NotesState {}
+
+class DisconnectedState extends NotesState {}

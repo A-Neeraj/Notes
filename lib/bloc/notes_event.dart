@@ -7,10 +7,16 @@ abstract class NotesEvent {}
 class AddEvent extends NotesEvent {
   String title;
   String desc;
-  AddEvent({this.title, this.desc});
+  String videoUrl;
+  String fileName;
+  File imageFile;
+  AddEvent(
+      {this.title, this.desc, this.videoUrl, this.fileName, this.imageFile});
 }
 
 class GetAllEvent extends NotesEvent {}
+
+class DisconnectedEvent extends NotesEvent {}
 
 class GetTrashEvent extends NotesEvent {}
 
@@ -19,7 +25,8 @@ class DeleteEvent extends NotesEvent {
   String id;
   String title;
   String desc;
-  DeleteEvent({this.title, this.desc, this.id});
+  String videoUrl;
+  DeleteEvent({this.title, this.desc, this.id, this.videoUrl});
 }
 
 // ignore: must_be_immutable
@@ -27,17 +34,25 @@ class UpdateEvent extends NotesEvent {
   String id;
   String title;
   String desc;
-  UpdateEvent({this.title, this.desc, this.id});
+  String videoUrl;
+  UpdateEvent({this.title, this.desc, this.id, this.videoUrl});
 }
 
 class RestoreEvent extends NotesEvent {
   String id;
   String title;
   String desc;
-  RestoreEvent({this.title, this.desc, this.id});
+  String videoUrl;
+  RestoreEvent({this.title, this.desc, this.id, this.videoUrl});
 }
 
 class DeleteForeverEvent extends NotesEvent {
   String id;
   DeleteForeverEvent({this.id});
+}
+
+class UploadVideoEvent extends NotesEvent {
+  String fileName;
+  File imageFile;
+  UploadVideoEvent({this.fileName, this.imageFile});
 }

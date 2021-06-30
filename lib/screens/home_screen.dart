@@ -85,7 +85,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         state.notes[i].title,
                                         state.notes[i].desc,
                                         state.notes[i].id,
-                                        _selectedIndex));
+                                        _selectedIndex,
+                                    state.notes[i].videoUrl));
                               },
                               child: Card(
                                 shape: RoundedRectangleBorder(

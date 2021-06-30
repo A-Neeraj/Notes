@@ -5,6 +5,7 @@ import 'package:notes_app/bloc/notes_bloc.dart';
 import 'package:notes_app/data/notes_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:notes_app/screens/card_details.dart';
+import 'package:notes_app/screens/play_video.dart';
 import 'screens/add_notes.dart';
 import 'screens/home_screen.dart';
 
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
               ),
           '/add': (context) => AddNotes(),
           '/details': (context) => CardDetails(),
+          '/video': (context) => PlayVideo(),
         },
       ),
     );
